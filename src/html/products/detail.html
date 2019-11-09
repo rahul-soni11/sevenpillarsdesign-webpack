@@ -1,0 +1,59 @@
+{% extends '../base.html' %}
+{% load static %}
+{% load related_products %}
+{% load get_meta_tags %}
+
+{% block meta %}
+{% get_meta_tags obj=product %}
+{% endblock %}
+
+{% block content %}
+<div class="w-100 my-md-4 px-0 px-md-5">
+
+    <div class="container my-md-4 px-1 px-md-3">
+        <div class="row m-0 my-2">
+            {% include 'products/detail-parts/_images.html' %}
+            {% include 'products/detail-parts/_description.html' %}
+        </div>
+    </div>
+
+    <hr>
+    <!-- Related_products products -->
+    {% if product.get_related_products.count > 0 %}
+    <h3 class="section-title py-3">Other Customers Were Interested In</h3>
+    <div class="row m-0">
+        {% related_products 4 3 %}
+    </div>
+    <div class="row m-0 my-4">
+        <a href="{{product.category.get_absolute_url}}" class="btn btn-primary mx-auto">View more</a>
+    </div>
+    {% endif %}
+
+
+</div>
+<!--w-100 my-md-4 px-0 px-md-5-->
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Product Detail Fancybox.
+    $(document).ready(function () {
+        $("[data-fancybox]").fancybox(
+            {
+                buttons: [
+                    "close"
+                ],
+                focus: true,
+                wheel: false,
+                infobar: false,
+
+                animationEffect: "zoom",
+                attr: {
+                    scrolling: "auto"
+                },
+            }
+        );
+    });
+
+</script>
+{% endblock %}

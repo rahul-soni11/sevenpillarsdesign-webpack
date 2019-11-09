@@ -1,0 +1,39 @@
+{% load static %}
+<div class="container">
+  <div class="row justify-content-center">
+    <h1 class="section-title">{{VideoSection.title}}</h1>
+
+  </div>
+  <div class="thumb_scroll">
+    <div class="row text-center">
+      {% for video in VideoSection.videos.all %}
+      <div class="video_thumb">
+        <div {% if forloop.first %}class="active" {%endif %}
+          onclick="changeVideo(this,'{{video.yt_id}}', '{{video.product.get_absolute_url}}')">
+          <img class="rounded-circle img-fluid" src="https://img.youtube.com/vi/{{video.yt_id}}/mqdefault.jpg"
+            alt="Card image cap" width="96" height="96">
+        </div>
+        <div class="video-date">{{video.created|date:"d-M, Y"}}</div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+</div>
+<!-- iFrame Container -->
+<div class="container-fluid" style="background-image: url('{% static 'images/video-bg-01.jpg' %}')">
+  <div class="container col-md-8 py-5 px-0">
+    <div class="embed-responsive embed-responsive-16by9">
+      <iframe class="embed-responsive-item"
+        src="https://www.youtube.com/embed/{{VideoSection.videos.first.yt_id}}?modestbranding=1;rel=0&autoplay=1&showinfo=0"
+        title="title" allowfullscreen="allowfullscreen" mozallowfullscreen="mozallowfullscreen"
+        msallowfullscreen="msallowfullscreen" oallowfullscreen="oallowfullscreen"
+        webkitallowfullscreen="webkitallowfullscreen" id="videoFrame"></iframe>
+    </div>
+    <a href="{{videos.first.product.get_absolute_url}}" id="product_link">
+      <div class="video_product py-md-4 py-sm-2 text-white text-center ">View Product <font
+          class="float-right pr-2 icon-angle-double-right" size=5> </font>
+      </div>
+    </a>
+  </div>
+</div>

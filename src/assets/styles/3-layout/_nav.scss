@@ -1,0 +1,162 @@
+/* common css starts */
+.searchbar {
+	border-color: rgba(127, 127, 127, 0.25);
+	-webkit-box-shadow: 0 3px 7px rgba(127, 127, 127, 0.16);
+	box-shadow: 0 3px 7px rgba(127, 127, 127, 0.16);
+}
+.searchbar input {
+	height: calc(2.2em + .75rem + 2px) !important;
+	border-right: 0px !important;
+}
+.searchbar input:focus {
+	border-color: rgba(127, 127, 127, 0.25) !important;
+	box-shadow: none !important;
+}
+.searchbar .input-group-text {
+	background-color: #fff !important;
+}
+.cart-count {
+	top: -12px;
+	left: 12px;
+	width: 20px;
+	height: 20px;
+	background: $primary;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 1px solid white;
+}
+.cart-count span {
+	font-size: 12px;
+	font-weight: 500;
+}
+/* common css ends */
+
+/* desktop css starts */
+
+.desktop .logo img {
+	max-width: 150px;
+}
+.desktop i, .mobile i {
+	font-size: 20px;
+	color: $secondary;
+	cursor: pointer;
+}
+.nav-item:hover > .dropdown-menu {
+	display: block;
+	border-bottom: none;
+	box-shadow: 0 3px 7px rgba(127, 127, 127, 0.16);
+
+}
+.dropdown-menu.mega-menu {
+	width: 100vw !important;
+	// left: -47.5px !important;
+	top: 98.8%;
+	margin-top: 0px;
+}
+.dropdown-menu{
+	margin-top: 0px;
+}
+
+.dropdown-menu p {
+	padding: .25rem 1.5rem;
+	color: $primary;
+}
+.dropdown-item {
+	font-size: 15px;
+	color: $secondary;
+	&:hover {
+		color: $primary;
+		background-color: #fff !important;
+	}
+}
+.desktop nav .nav-item > a {
+	color: $secondary;
+}
+.desktop nav .nav-item:hover > a {
+	color: $primary;
+}
+/* desktop css ends */
+
+
+/* mobile css starts */
+.mobile i {
+	font-size: 18px;
+	color: #939598;
+	cursor: pointer;
+}
+.mobile .cart-count span {
+	font-size: 10px;
+}
+.mobile .cart-count {
+	width: 18px;
+	height: 18px;
+}
+.sidenav {
+	height: 100%;
+	width: 0;
+	position: fixed;
+	z-index: 1050;
+	top: 0;
+	left: 0;
+	background-color: #fff;
+	overflow-x: hidden;
+	transition: 0.3s;
+}
+.sidenav-heading p {
+	color: $primary;
+	font-size: 20px;
+	font-weight: 300;
+	letter-spacing: 1px;
+}
+.sidenav-heading i {
+	font-size: 20px;
+}
+.sidenav .menu > li a {
+	color:$secondary;
+}
+.sidenav .menu > li a span {
+	font-size: 16px;
+}
+.sidenav .menu > li a i {
+	font-size: 14px;
+}
+.sidenav .menu li a:hover {
+	text-decoration: none !important;
+}
+.sidenav .menu > li a .fa-chevron-down {
+	display: none;
+}
+.sidenav .menu > li a .fa-chevron-up {
+	display: inline;
+}
+.sidenav .menu > li a.collapsed .fa-chevron-down {
+	display: inline;
+}
+.sidenav .menu > li a.collapsed .fa-chevron-up {
+	display: none;
+}
+.sidenav .menu .submenu > li a i {
+	font-size: 12px;
+}
+.sidenav .submenu li a span {
+	font-size: 15px;
+}
+.sidenav .submenu li ul li a {
+	font-size: 14px;
+}
+.overlay {
+	position: fixed;
+	display: none;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 1040;
+	cursor: pointer;
+}
+/* mobile css ends */

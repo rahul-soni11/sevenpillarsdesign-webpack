@@ -1,0 +1,151 @@
+{% extends 'base.html' %}
+
+{% block meta %}
+<title>Your shoping cart {% if settings.title %}- {{settings.title}} {% endif %}</title>
+{% endblock %}
+
+{% block content %}
+{% if cart_data.messages %}
+<div class="container py-2">
+    {% for message in cart_data.messages %}
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+{% if cart|length != 0 %}
+<div class="w-100 px-1 px-md-5 my-5">
+
+    <div class="row mx-0 my-4 px-1 px-md-3 align-items-center justify-content-between cart-heading">
+        <h3 class="m-0">Your Cart</h3>
+        <div class="d-flex align-items-center">
+            <div class="d-flex flex-column align-items-end">
+                <p class="m-0 subtotal">Subtotal</p>
+                <h5 class="m-0 price">₹ {{ cart_data.cart_total }}</h5>
+            </div>
+            <div class="ml-2 ml-md-4">
+                <a href="{% url 'orders:checkout' step=2 %}" class="btn btn-primary">
+                    <i class="fa fa-shopping-cart mr-1"></i>Checkout
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row m-0">
+        <div class="col-lg-9 my-1 px-1 px-md-3">
+            <!-- cart item -->
+            {% for key, item in cart_data.products.items %}
+            <div class="row m-0 p-2 align-items-center mb-4 cart-item">
+
+                <!-- Item image -->
+                <div class="col-md-2 col-3 px-2 d-flex justify-content-center">
+                    <img src="{{item.image}}" class="w-100" />
+                </div>
+
+                <!-- Name, Mobile[Quantity Change, Price] -->
+                <div class="col-md-5 col-9 px-2 d-flex flex-column justify-content-center">
+
+                    <!-- Name & Price -->
+                    <div class="w-100">
+                        <a href="{{item.variant.product.get_absolute_url}}">
+                            <h6 class="m-0 name">{{item.variant.display_product}}</h6>
+                            <p class="m-0 price">₹ {{item.price}}</p>
+                        </a>
+                    </div>
+
+                    <!--  Mobile  Quantity update form + Item Total + Remove Link -->
+                    <div class="d-block d-md-none">
+                        <div class="d-flex align-items-center justify-content-between my-3">
+                            <form action="{% url 'cart:cart_add' %}" method="POST" class="form-group qty m-0">
+                                {% csrf_token %}
+                                {{item.update_quantity_form.quantity}}
+                                {{item.update_quantity_form.variant}}
+                                {{item.update_quantity_form.update}}
+                                <button type="submit" class="btn btn-primary">Update</button>
+                            </form>
+                            <p class=" m-0 item-total">₹ {{item.total_price}}</p>
+
+                            <!-- Remove Link Mobile -->
+                            <a href="{% url 'cart:cart_remove' key %}"><i class="fa fa-close"></i></a>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!--  Desktop-Quantity update form -->
+                <div class="col-md-2 px-2 d-flex justify-content-center">
+                    <div class="d-none d-md-block">
+                        <form action="{% url 'cart:cart_add' %}" method="POST" class="form-group qty m-0">
+                            {% csrf_token %}
+                            {{item.update_quantity_form.quantity}}
+                            {{item.update_quantity_form.variant}}
+                            {{item.update_quantity_form.update}}
+                            <button type="submit" class="btn btn-primary btn-sm ml-1">Update</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!--  Desktop Item Total -->
+                <div class="col-md-2 px-2 d-flex justify-content-center">
+                    <div class="d-none d-md-block">
+                        <p class="m-0 item-total">₹ {{item.total_price}}</p>
+                    </div>
+                </div>
+
+                <!-- Remove item link-->
+                <div class="col-md-1 px-2 d-none d-md-block d-flex justify-content-center">
+                    <div class="d-none d-md-block">
+                        <a href="{% url 'cart:cart_remove' key %}"><i class="fa fa-close"></i></a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+            <!-- bottom subtotal -->
+            <div class="pt-3 cart-bill">
+                <div class="d-flex align-items-center justify-content-between border-top pt-3 w-100">
+                    <h5>Subtotal</h5>
+                    <h3 class="total">₹ {{ cart_data.cart_total }}</h3>
+                </div>
+                <p class="mt-2">Shipping & taxes calculated at checkout</p>
+                <a href="{% url 'orders:checkout' step=2 %}" class="btn btn-primary btn-block">
+                    <i class="fa fa-shopping-cart mr-1"></i>
+                    Checkout
+                </a>
+                <div class="text-center my-4">
+                    <a href="/" class="btn btn-outline-primary">
+                        Continue Shopping
+                        <i class="fa fa-chevron-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- text -->
+        <div class="col-lg-3 my-1 px-1 px-md-3">
+            <div class="bg-light py-4 px-3 cart-info">
+                <h6>Delivery and Shipping</h6>
+                <p>The products are typically dispatched within 3-4 weeks of order confirmation depending on your
+                    destination. Once the product is dispatched for delivery we will notify you of the same.</p>
+                <h6 class="mt-4">Return and Refund</h6>
+                <p>We work on a no return and refund policy for all items.</p>
+                <p>Only exception being, if the product is received damaged and the same is brought to our notice within
+                    48 hrs, along with supporting images of the damaged good.</p>
+                <h6 class="mt-4">Exchanges</h6>
+                <p>We only exchange items if they are received defective or damaged and after immediate intimation
+                    (within 48hrs of delivery) on the receipt of the product. </p>
+                <p>Please write to us for any feedback, complaint or request.</p>
+                <p>Read our policies for more details.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% else %}
+<h5 class="text-center py-4 text-secondary">Cart is empty !</h5>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,25 @@
+.page-link {
+	width: 35px;
+	height: 35px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: $secondary;
+	border-radius: 50% !important;
+	border: 1px solid $secondary;
+}
+.page-item.disabled .page-link {
+	border: 1px solid $secondary;
+	color: $secondary;
+}
+.page-link:hover {
+	background-color: $secondary;
+	color: #fff;
+}
+.page-link:focus {
+	outline: 0;
+	box-shadow: none !important;
+}
+.page-item.disabled .page-link {
+	opacity: 0.4;
+}

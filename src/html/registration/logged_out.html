@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block meta %}
+<title>{{ title }}</title>
+{% endblock %}
+
+{% block content %}
+<div class="container my-5 text-center">
+    <p>Thanks for spending some quality time with the Web site today.</p>
+
+    <p><a href="{{ login_url }}" class="btn btn-primary col-4 ">Log in</a></p>
+    <div class="d-flex justify-content-center my-4">
+        <a href="/">Continue Shopping</a>
+    </div>
+</div>
+{% endblock %}

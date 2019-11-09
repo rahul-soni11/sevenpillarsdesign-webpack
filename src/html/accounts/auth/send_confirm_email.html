@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container my-5">
+   <!-- display error -->
+   {% if form.errors %}
+   {% include 'accounts/auth/_form_errors.html' %}
+   {% endif %}
+
+   {% if not email %}
+   <form action="." method="post" class="col-md-5 mx-auto">
+      {% csrf_token %}
+      {% for fields in form %}
+      <div class="form-group">
+         {{fields}}
+      </div>
+      {% endfor %}
+      <input type="submit" value="Send Activation Link" class="btn btn-primary btn-block">
+   </form>
+   {% endif %}
+
+   <div class="d-flex justify-content-center mt-4">
+      <a href="/">Continue Shopping</a>
+   </div>
+</div>
+{% endblock %}

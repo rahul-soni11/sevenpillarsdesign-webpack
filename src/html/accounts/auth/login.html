@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block meta %}
+<title>Login</title>
+{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <!-- display error -->
+    {% if form.errors %}
+    {% include 'accounts/auth/_form_errors.html' %}
+    {% endif %}
+
+    <form action="{% url 'accounts:login' %}" method="post" class="col-md-5 mx-auto">
+        {% csrf_token %}
+        {% for fields in form %}
+        <div class="form-group">
+            {{fields}}
+        </div>
+        {% endfor %}
+        <div class="form-group">
+            <input type="submit" value="Login" class="btn btn-primary btn-block">
+        </div>
+        <div class="form-group">
+            <a href="{% url 'accounts:password_reset' %}" class="my-3">Forget Password</a>
+        </div>
+    </form>
+    <div class="d-flex justify-content-center mt-4">
+        <p class="text-muted">Don't have an account? <a href="{% url 'accounts:register' %}">Create
+                one</a></p>
+    </div>
+</div>
+{% endblock %}

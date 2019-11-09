@@ -3,6 +3,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 var BundleTracker = require("webpack-bundle-tracker");
+var webpack = require('webpack');
 
 module.exports = {
   /**
@@ -11,7 +12,7 @@ module.exports = {
    * The first place Webpack looks to start building the bundle.
    */
   entry: {
-    main: paths.src + '/assets/index.js',
+    main: paths.src + '/assets/main.js',
   },
 
   /**
@@ -46,7 +47,7 @@ module.exports = {
     new CopyWebpackPlugin([
       {
         from: paths.html,
-        // to: 'dist',
+        to: 'template',
         ignore: ['*.DS_Store'],
       },
     ]),
@@ -61,7 +62,7 @@ module.exports = {
     //   favicon: paths.src + '/images/favicon.png',
     //   template: paths.src + '/template.html', // template file
     //   filename: 'index.html', // output file
-    // }),
+    // }),   
 
     /**
      * Webpack Stats Plugin
@@ -71,7 +72,13 @@ module.exports = {
     new BundleTracker({
       path: paths.build,
       filename: "webpack-stats.json"
-    })
+    }),
+
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery'
+    }),
+
   ],
 
   /**
@@ -137,4 +144,29 @@ module.exports = {
       },
     ],
   },
+
+  /**
+     * SplitChunksPlugin
+     *
+     * Split Vender code into saparate chunk
+     *      or
+     * page based chunk files.
+  */
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+      cacheGroups: {
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10
+        },
+        default: {
+          minChunks: 2,
+          priority: -20,
+          reuseExistingChunk: true
+        }
+      }
+    }
+  }
+
 }

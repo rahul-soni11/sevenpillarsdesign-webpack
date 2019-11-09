@@ -1,0 +1,33 @@
+{% extends '../base.html' %}
+{% load get_meta_tags %}
+{% load latest_products %}
+
+
+{% block meta %}
+{% get_meta_tags obj=category %}
+{% endblock %}
+
+{% block content %}
+
+   {% if obj.background_image %}
+   <img src="{{obj.background_image.url}}" class="w-100" />
+   {% endif %}
+
+
+         
+   <!-- PRODUCTS -->
+      {% if products %}
+      <div class="w-100 my-3">
+         <div class="row m-0">
+            {% show_products None None products %}
+         </div>
+      </div>
+      {% endif %}
+   
+   
+         
+
+   <!-- PAGINATION -->
+   {% include 'products/pagination.html' %}
+
+{% endblock %}

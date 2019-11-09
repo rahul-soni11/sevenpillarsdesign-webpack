@@ -1,0 +1,76 @@
+/* css for subscribe section in index page starts */
+.subscribe-section {
+	background-color: $primary;
+	text-align: center;
+	color: #fff;
+}
+.subscribe-section input {
+	height: 50px;
+}
+.subscribe-section input:focus {
+	box-shadow: none !important;
+	border-color: #ced4da !important;
+}
+.subscribe-section span {
+	font-size: 13px;
+}
+@media only screen and (max-width: 576px) {
+	.subscribe-section input {
+		height: 38px;
+	}
+}
+/* css for subscribe section in index page ends */
+
+.footer {
+	background-color: $dark;
+	color: #c0c0c0;
+}
+.footer .border-b-line {
+	width: 25px;
+	height: 2px;
+	background-color: $primary;
+	border-radius: 20%;
+}
+.footer .address {
+	display: grid;
+}
+.footer .address span,
+.footer p {
+	font-size: 14px;
+	color: #9a9a9a;
+}
+.footer ul {
+	padding-left: 16px;
+}
+.footer ul li {
+	font-size: 14px;
+	cursor: pointer;
+	color: #9a9a9a;
+}
+.footer ul li {
+	font-size: 14px;
+	cursor: pointer;
+}
+.footer ul li:hover {
+	color: $primary;
+}
+.social-icons .icon {
+	width: 30px;
+	height: 30px;
+	border-width: 2px;
+	cursor: pointer;
+}
+.social-icons .icon i {
+	font-size: 14px;
+	font-weight: 600;
+}
+.social-icons .icon:hover {
+	background-color: $primary;
+}
+.social-icons .icon:hover i {
+	color: white;
+}
+.footer span.input-group-text {
+	background: #9a9a9a;
+	color: white;
+}

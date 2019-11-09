@@ -1,0 +1,28 @@
+<div class="highlights">
+	<div class="w-100 my-5">
+		<h1 class="section-title">{{Highlight.title}}</h1>
+		<div class="row m-0">
+			{% if Highlight.items.all.count == 3 %}
+			{% for item in Highlight.items.all %}
+			<div class="col-lg-{% cycle '12' '6' '6' %} col-12 highlight-item">
+				<img src="{{item.image.url}}" class="img-fluid w-100" />
+				<div class="position-absolute pt-5 pl-5 text-white content">
+					<h4>{{item.caption}}</h4>
+					<a href="{{item.get_url}}" class="btn btn-primary">View</a>
+				</div>
+			</div>
+			{% endfor %}
+			{% else %}
+			{% for item in Highlight.items.all %}
+			<div class="col-lg-{% cycle '8' '4' '4' '8' %} col-12 highlight-item">
+				<img src="{{item.image.url}}" class="img-fluid h-100 w-100" />
+				<div class="position-absolute pt-5 pl-5 text-white content">
+					<h4>{{item.caption}}</h4>
+					<a href="{{item.get_url}}" class="btn btn-primary">View</a>
+				</div>
+			</div>
+			{% endfor %}
+			{% endif %}
+		</div>
+	</div>
+</div>

@@ -14,12 +14,12 @@
 
     <!-- Font awesome icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- Fancybox css -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.css"
-        type="text/css" media="screen" />
 
     <!-- Template css -->
     {% render_bundle 'main' 'css' %}
+    {% render_bundle 'vendors~main' 'css' %}
+
+
 
 </head>
 
@@ -49,9 +49,9 @@
 
     <!-- Template Scripts -->
     {% render_bundle 'main' 'js' %}
+    {% render_bundle 'vendors~main' 'js' %}
 
-    <script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+
 
     {% block scripts %}
     {% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container my-5 ">
+    <!-- display error -->
+    {% if form.errors %}
+    {% include 'accounts/auth/_form_errors.html' %}
+    {% endif %}
+
+    {% if not email %}
+    <form action="{% url 'accounts:register' %}" method="post" class="col-md-5 mx-auto">
+        {% csrf_token %}
+        {% for fields in form %}
+        <div class="form-group">
+            {{fields}}
+        </div>
+        {% endfor %}
+        <input type="submit" value="Register" class="btn btn-primary btn-block">
+    </form>
+    {% endif %}
+    <div class="d-flex justify-content-center mt-4">
+        <a href="{% url 'accounts:login' %}">Click here to Login</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,42 @@
+<!-- Left Thumbnails Desktop -->
+{% if product.images.all %}
+<div class="col-lg-1 col-md-2 d-none d-md-block">
+    {% for img in product.images.all %}
+    <div class="mb-2 p-1 {% if forloop.first %}active-img{% endif %}" id="thumb{{forloop.counter0}}"
+        onclick="changeMainImage('{{img.image.thumbnail.900x600}}','thumb{{forloop.counter0}}')">
+        <img src="{{img.image.thumbnail.240x160}}" class="w-100" />
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+<!-- Main image and mobile Thumbnail -->
+<div class="col-lg-6 col-md-10 col-12 px-1 px-md-3">
+    <a href="{{product.get_first_image.image.thumbnail.1800x1200}}" data-fancybox="images" id="img_xl">
+        <img src="{{product.get_first_image_thumb_large}}" class="w-100" id="img_l" />
+    </a>
+
+    <!-- Mobile Thumbnails -->
+    <div class="d-block d-md-none">
+        <div class="d-flex flex-row mt-2 mb-3 w-100 overflow-auto" style="white-space: nowrap">
+            {% for img in product.images.all %}
+            <div class="mr-2 p-1 col-2 {% if forloop.first %}active-img{% endif %}"
+                onclick="changeMainImage('{{img.image.thumbnail.900x600}}','mobileThumb{{forloop.counter0}}')"
+                id="mobileThumb{{forloop.counter0}}">
+                <img src="{{img.image.thumbnail.240x160}}" class="w-100" />
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- For fancybox navigation -->
+    <div class="d-none">
+        {% for img in product.images.all %}
+        {% if not forloop.first %}
+        <a href="{{img.image.thumbnail.1800x1200}}" data-fancybox="images">
+            <img src="#" class="w-100" />
+        </a>
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>

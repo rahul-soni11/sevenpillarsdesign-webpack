@@ -1,0 +1,106 @@
+body{
+	-webkit-font-smoothing: antialiased;
+}
+
+.active-img {
+	border: 2px solid #f2af00;
+	border-radius: 8%;
+}
+
+.product_name{
+	font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.product_price{
+	font-size: 1.75rem;
+}
+
+.color-icon {
+	height: 50px;
+	width: 50px;
+	display: inline-block;
+	position: relative;
+	cursor: pointer;
+	background-size: contain;
+	border-radius: 50%;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	border: 2px solid #707070;
+}
+
+.color-icon:after {
+	content: '';
+	border-radius: 50%;
+	border: 2px solid #fff;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0px;
+	top: 0;
+	bottom: 0px;
+	z-index: 2;
+}
+
+#product-addtocart-button{
+	font-size: 18px;
+	border:none;
+	-webkit-transition: all .3s ease-in; 
+	transition: all .3s ease-in; 
+
+	&:hover{
+		background-color:$primary;
+	}
+}
+
+/* fancybox css */
+.fancybox-navigation .fancybox-button {
+	bottom: 0 !important;
+	top: calc(100% - 58px) !important;
+}
+.fancybox-navigation .fancybox-button--arrow_left {
+	left: calc(48% - 67.5px) !important;
+}
+.fancybox-navigation .fancybox-button--arrow_right {
+	right: calc(48% - 67.5px) !important;
+}
+.fancybox-toolbar {
+	right: auto !important;
+	top: auto !important;
+	left: calc(50% - 22.5px) !important;
+	bottom: 15px !important;
+}
+.fancybox-button {
+	width: 45px !important;
+	height: 45px !important;
+	border-radius: 50% !important;
+	padding: 0 !important;
+	background: #fff !important;
+}
+.fancybox-button svg {
+	color: #716c6c !important;
+}
+.fancybox-slide--image {
+	padding: 10px 0 !important;
+}
+
+@media screen and (max-width: 768px) {
+	.fancybox-button {
+		width: 32px !important;
+		height: 32px !important;
+	}
+	.fancybox-navigation .fancybox-button--arrow_left {
+		left: calc(48% - 48px) !important;
+	}
+	.fancybox-navigation .fancybox-button--arrow_right {
+		right: calc(48% - 48px) !important;
+	}
+	.fancybox-toolbar {
+		right: auto !important;
+		top: auto !important;
+		left: calc(50% - 16px) !important;
+		bottom: 26px !important;
+	}
+}
+/* fancybox css ends */

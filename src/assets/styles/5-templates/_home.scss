@@ -1,0 +1,11 @@
+.section-title{
+    font-family: Quickpen,sans-serif;
+    color: $dark;
+    font-size: 2rem;
+    text-align: center;
+    font-weight: 400;
+    
+}
+
+/* remove rounding from cards, buttons and inputs */
+.card, .btn, .form-control { border-radius: 0; }

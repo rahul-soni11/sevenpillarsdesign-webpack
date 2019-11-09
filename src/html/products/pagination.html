@@ -1,0 +1,16 @@
+{% if products.has_other_pages %}
+
+<ul class="pagination justify-content-center flex-wrap" style="margin:20px 0">
+      
+      <!-- <li class="page-item"><a class="page-link" href="#"></a></li> -->
+      <li class="page-item mx-1 {% if not products.has_previous %}disabled{% endif %}"><a class="page-link" href="?page={% if products.has_previous %}{{products.previous_page_number}}{% endif %}"><i class="fa fa-chevron-left"></i></a></li>
+      
+      {% for p in paginator.page_range %}
+      <li class="page-item mx-1 {% ifequal page p %}active{% endifequal %}"><a class="page-link" href="?page={{p}}">{{p}}</a></li>
+      {% endfor %}
+
+      <li class="page-item mx-1 {% if not products.has_next %}disabled{% endif %}"><a class="page-link" href="?page={% if products.has_next %}{{products.next_page_number}}{% endif %}"><i class="fa fa-chevron-right"></i></a></li>
+
+</ul>
+
+{% endif %}

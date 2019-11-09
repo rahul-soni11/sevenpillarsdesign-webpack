@@ -1,0 +1,17 @@
+.swiper-button-prev, .swiper-button-next{
+    color: $primary;
+    outline: none !important;
+	background: white;
+	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3), 0 0 4px rgba(0, 0, 0, 0.2);
+	width: 35px;
+	height: 35px;
+	border-radius: 50%;
+    &:focus{
+        outline: none;
+    }
+    &:after{
+        font-size: 18px;
+        color: $secondary;
+    }
+
+ }

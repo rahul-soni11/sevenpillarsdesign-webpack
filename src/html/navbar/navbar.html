@@ -1,0 +1,159 @@
+<header>
+    <!-- Desktop -->
+    <div class="d-none d-lg-block desktop">
+        <!-- desktop top header -->
+        <div class="w-100 px-5">
+            <div class="py-3">
+                <div class="row flex-row flex-nowrap m-0 d-flex align-items-center justify-content-between">
+                    <a href="/" class="logo">
+                        {% if settings.logo %}
+                        <img src="{{settings.get_logo_url}}" class="img-fluid" alt="" width="200" />
+                        {% else %}
+                        {{settings.title}}
+                        {% endif %}
+                    </a>
+                    <div class="w-100 mx-5 searchbar">
+                        <div class="input-group">
+                            <input type="text" class="form-control py-3" placeholder="What are you looking for?" />
+                            <div class="input-group-append">
+                                <span class="input-group-text">
+                                    <i class="fa fa-search mx-2"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    {% include 'navbar/_auth_cart.html' %}
+                </div>
+            </div>
+        </div>
+
+        <!-- desktop navbar -->
+        <div class="w-100 border-top border-bottom position-relative">
+            <div class="mx-5">
+                <nav class="nav">
+                    {% for item in navbar %}
+                    {% with children=item.child_items %}
+                    <li class="nav-item py-2 {% if not item.has_grand_children %}dropdown{% endif %}">
+                        <a class="nav-link {% if children %}dropdown-toggle{% endif %}" href="{{item.url}}"
+                            role="button" aria-haspopup="true" aria-expanded="false">{{item.name}}</a>
+                        {% if children %}
+                        <div class="dropdown-menu {% if item.has_grand_children %}mega-menu{% endif %} rounded-0">
+                            <div class="row m-0">
+                                {% for child in children %}
+                                {% with grandchildren=child.child_items %}
+                                <div class="col">
+                                    {% if grandchildren %}
+                                    <p class="mb-1">{{child.name}}</p>
+                                    {% for gc in grandchildren %}
+                                    <a class="dropdown-item" href="{{gc.url}}">{{gc.name}}</a>
+                                    {% endfor %}
+                                    <a class="dropdown-item font-weight-light" href="{{child.url}}">View all
+                                        {{child.name}}</a>
+                                    {% else %}
+                                    <a href="{{child.url}}"
+                                        class="{% if not item.has_grand_children %}dropdown-item{% endif %}">{{child.name}}</a>
+
+                                    {% endif %}
+                                </div>
+                                {% endwith %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% endif %}
+                    </li>
+                    {% endwith %}
+                    {% endfor %}
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile -->
+    <div class="d-block d-lg-none mobile">
+        <!-- mobile top header -->
+        <div class="mx-2">
+            <div class="w-100 d-flex align-items-center justify-content-between py-3">
+                <i class="fa fa-bars" onclick="window.toggleNavbar(true)"></i>
+                <a href="/">
+                    <img src="{{settings.get_logo_url}}" style="width: 100px" />
+                </a>
+
+                {% include 'navbar/_auth_cart.html' %}
+            </div>
+
+            <div class="w-100 mb-2 searchbar">
+                <div class="input-group">
+                    <input type="text" class="form-control py-3" placeholder="What are you looking for?" />
+                    <div class="input-group-append">
+                        <span class="input-group-text">
+                            <i class="fa fa-search mx-2"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- mobile side navbar -->
+        <div id="sidenav" class="sidenav">
+            <nav class="nav px-3 py-1">
+                <!-- brand -->
+                <div class="d-flex flex-row w-100 align-items-center justify-content-between py-2 sidenav-heading">
+                    <p class="m-0 text-nowrap">{{settings.title}}</p>
+                    <i class="fa fa-close" onclick="window.toggleNavbar(false)"></i>
+                </div>
+
+                <!-- Links -->
+                <ul class="list-unstyled components w-100 menu">
+                    {% for item in navbar %}
+                    {% with children=item.child_items %}
+                    {% if children %}
+                    <li class="py-1 w-100">
+                        <a href="#submenu{{item.id}}" data-toggle="collapse" aria-expanded="false"
+                            class="collapsed d-flex align-items-center justify-content-between w-100">
+                            <span>{{item.name}}</span>
+                            <i class="fa fa-chevron-up"></i>
+                            <i class="fa fa-chevron-down"></i>
+                        </a>
+                        <ul class="collapse list-unstyled pt-1 pl-4 submenu" id="submenu{{item.id}}">
+                            {% for child in children %}
+                            {% with grandchildren=child.child_items %}
+                            {% if grandchildren %}
+                            <li class="pb-2">
+                                <a href="#submenu{{child.id}}" data-toggle="collapse" aria-expanded="false"
+                                    class="collapsed d-flex align-items-center justify-content-between w-100">
+                                    <span>{{child.name}}</span>
+                                    {% if grandchildren %}
+                                    <i class="fa fa-chevron-up"></i>
+                                    <i class="fa fa-chevron-down"></i>
+                                    {% endif %}
+                                </a>
+                                <ul class="collapse list-unstyled pl-4 pt-1" id="submenu{{child.id}}">
+                                    {% for gc in grandchildren %}
+                                    <li class="pb-1"><a href="{{gc.url}}">{{gc.name}}</a></li>
+                                    {% endfor %}
+                                    <li class="pb-1"><a href="{{child.url}}" class="font-weight-bold">View all -
+                                            {{child.name}}</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            {% else %}
+                            <li class="pb-2"><a href="{{child.url}}">{{child.name}}</a></li>
+                            {% endif  %}
+
+                            {% endwith %}
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    {% else %}
+                    <li class="py-1 w-100">
+                        <a href="{{item.url}}">{{item.name}}</a>
+                    </li>
+                    {% endif %}
+                    {% endwith %}
+                    {% endfor %}
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div id="overlay" class="overlay" onclick="window.toggleNavbar(false)"></div>
+</header>

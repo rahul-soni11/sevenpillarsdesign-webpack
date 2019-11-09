@@ -1,0 +1,121 @@
+<div class="subscribe-section w-100 py-4 py-md-5 row m-0 d-flex flex-column align-items-center justify-content-center">
+    <div class="col-lg-6 col-md-9 col-sm-10">
+        <h3 class="mb-1">Stay in the Know</h3>
+        <p>Sign up for emails to be the first to see new arrivals, hear about special sales and more.</p>
+        <form class="d-flex flex-row mb-3">
+            <input type="email" class="form-control rounded-0 w-100" placeholder="Enter your email address">
+            <button type="button" class="btn btn-secondary ml-1 ml-md-3 px-md-5 rounded-0">Subscribe</button>
+        </form>
+        <span class="d-inline-block">Signing up means you will receive our newsletter with interiors inspiration,
+            offers, promotions and more.</span>
+        <span class="d-inline-block">can opt out at any time please see our privacy policy for more
+            information.</span>
+    </div>
+</div>
+
+<div class="footer p-3">
+    <div class="px-sm-3 px-md-5">
+        <div class="row m-0 my-3">
+
+            <div class="col-lg-3 col-sm-6 my-3">
+                <h6 class="mb-2">REACH US</h6>
+                <div class="border-b-line mb-3"></div>
+                {{settings.store_address}}
+
+
+                <div class="d-flex mt-3 social-icons">
+                    {% if settings.facebook %}
+                    <div class="d-flex align-items-center justify-content-center border p-1 rounded-circle mr-3 icon">
+                        <a href="{{settings.facebook}}"><i class="fa fa-facebook"></i></a>
+                    </div>
+                    {% endif %}
+
+                    {% if settings.twitter %}
+                    <div class="d-flex align-items-center justify-content-center border p-1 rounded-circle mr-3 icon">
+                        <a href="{{settings.twitter}}"><i class="fa fa-twitter"></i></a>
+                    </div>
+                    {% endif %}
+
+                    {% if settings.instagram %}
+                    <div class="d-flex align-items-center justify-content-center border p-1 rounded-circle mr-3 icon">
+                        <a href="{{settings.instagram}}"><i class="fa fa-instagram"></i></a>
+                    </div>
+                    {% endif %}
+
+                    {% if settings.youtube %}
+                    <div class="d-flex align-items-center justify-content-center border p-1 rounded-circle mr-3 icon">
+                        <a href="{{settings.youtube}}"><i class="fa fa-youtube"></i></a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-6 my-3">
+                <h6 class="mb-2">QUICK LINKS</h6>
+                <div class="border-b-line mb-3"></div>
+                <ul class="list-styled-disc components">
+                    <li class="mb-1">
+                        <a>About Us</a>
+                    </li>
+                    <li class="mb-1">
+                        <a>Careers</a>
+                    </li>
+                    <li class="mb-1">
+                        <a>Projects</a>
+                    </li>
+                    <li class="mb-1">
+                        <a>Journal-Our Blog</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-lg-3 col-sm-6 my-3">
+                <h6 class="mb-2">SHOPPING INFO</h6>
+                <div class="border-b-line mb-3"></div>
+                <ul class="list-styled-disc components">
+                    <li class="mb-1">
+                        <a>Privacy Policy</a>
+                    </li>
+                    <li class="mb-1">
+                        <a>Security</a>
+                    </li>
+                    <li class="mb-1">
+                        <a>Terms and Conditions</a>
+                    </li>
+                    <li class="mb-1">
+                        <a>Return Policy</a>
+                    </li>
+                    <li class="mb-1">
+                        <a>Catalog</a>
+                    </li>
+                    <li class="mb-1">
+                        <a>Care Instructions (General)</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-lg-3 col-sm-6 my-3">
+                <h6 class="mb-2">STORE LOCATOR</h6>
+                <div class="border-b-line mb-3"></div>
+                <ul class="list-styled-disc components">
+                    <li class="mb-1">
+                        <a>Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="w-100 col-md-3 col-12 mt-2 pr-0">
+                <div class="input-group">
+                    <input type="text" class="form-control py-3 rounded-0" placeholder="your email" />
+                    <div class="input-group-append">
+                        <span class="input-group-text rounded-0">
+                            <i class="fa fa-envelope mr-1"></i>
+                            Subscribe
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

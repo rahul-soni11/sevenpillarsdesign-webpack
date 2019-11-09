@@ -1,0 +1,87 @@
+<div class="row m-0 pt-md-3">
+    <div class="insta-title-section">
+        <h4 class="m-0">{{InstagramSection.title}}</h4>
+    </div>
+    <div class="w-100 insta-content pb-5">
+        <p class="mb-1">We love seeing our products in your fabulous homes</p>
+        <p>Use the hashtag <a class="hashtag" href="#">#myhashtag</a> on Instagram for a chance to be featured on
+            our gallery</p>
+
+        <div class="swiper-content position-relative px-md-5">
+            <div class="swiper-container posts">
+                <div class="swiper-wrapper">
+                    {% for post in InstagramSection.posts.all %}
+                    {% with slide_no=0 %}
+                    <div class="swiper-slide">
+                        <div class="post position-relative">
+                            <img src="{{post.post_url}}media/?size=m" class="w-100 h-100" />
+                            {% if post.products %}
+                            <div
+                                class="w-100 h-100 position-absolute d-flex align-items-center justify-content-center btn-container">
+                                <button class="btn btn-outline-primary btn-md px-5 rounded-0 fancy-modal"
+                                    slide_hash="slide{{forloop.counter0}}">I want
+                                    It</button>
+                            </div>
+                            {}
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endwith %}
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- If we need navigation buttons -->
+            <div class="d-none d-md-block">
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Instagram modal -->
+<div class="insta-modal" id="insta-modal">
+    <div class="swiper-modal-content position-relative px-md-5">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                {% for post in InstagramSection.posts.all %}
+                {% if post.products %}
+                <div class="row m-0 w-100 swiper-slide" data-hash="slide{{forloop.counter0}}">
+                    <div class=" col-md-8">
+                        <img src="{{post.post_url}}media/?size=l" class="w-100" />
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="mb-4 mt-3 mt-md-0">{{post.author}}</h6>
+                        <hr>
+                        </hr>
+                        <p><span class="mr-1">@{{post.author}}</span>{{post.description}}</p>
+
+                        <div class="pt-5">
+                            <h5 class="text-center">Shop the look</h5>
+                            <div class="swiper-inside-modal-content position-relative px-3">
+                                <div class="swiper-container">
+                                    <div class="swiper-wrapper mx-0 py-3 w-100">
+                                        {% for product in post.products %}
+                                        <div class="swiper-slide">
+                                            <a href="{{product.url}}"><img src="{{product.image}}" class="w-100" /></a>
+                                            <p style="font-size: 13px;" class="text-center">{{product.name}}</p>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                <div class="swiper-button-next swiper-inner-next"></div>
+                                <div class="swiper-button-prev swiper-inner-prev"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="swiper-button-next swiper-next"></div>
+        <div class="swiper-button-prev swiper-prev"></div>
+    </div>
+</div>
