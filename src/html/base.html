@@ -16,8 +16,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Template css -->
-    {% render_bundle 'main' 'css' %}
     {% render_bundle 'vendors~main' 'css' %}
+    {% render_bundle 'main' 'css' %}
 
 
 
@@ -48,8 +48,8 @@
     {% endif %}
 
     <!-- Template Scripts -->
-    {% render_bundle 'main' 'js' 'defer' %}
     {% render_bundle 'vendors~main' 'js' 'defer'  %}
+    {% render_bundle 'main' 'js' 'defer' %}
 
 
 

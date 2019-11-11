@@ -1,5 +1,6 @@
 {% load static %}
 
+{% comment %} TO BE REMOVED {% endcomment %}
 {% for product in products %}
 <div class="col-lg-3 col-md-4 col-6 my-1 my-md-2 p-1 p-md-2">
    <div class="product-item">
@@ -7,9 +8,37 @@
          <img src="{{product.get_first_image_thumb_large}}" class="w-100" alt="{{product.name}}" />
       </a>
       <div class="details">
-         <a href="{{product.get_absolute_url}}" class="my-1">{{product.name}}</a>
+         <a href="{{product.get_absolute_url}}" class="text-dark">{{product.name}}</a>
          <p class="m-0">₹ {{product.price}}</p>
       </div>
    </div>
 </div>
 {% endfor %}
+
+{% for product in queryset %}
+<div class="{{parent_div_class}}">
+   <div class="product-item">
+      <a href="{{ product.get_absolute_url }}">
+         <img src="{{product.get_first_image_thumb_large}}" class="w-100" alt="{{product.name}}" />
+      </a>
+      <div class="details">
+         <a href="{{product.get_absolute_url}}" class="text-dark">{{product.name}}</a>
+         <p class="m-0">₹ {{product.price}}</p>
+      </div>
+   </div>
+</div>
+{% endfor %}
+
+{% if product %}
+<div class="{{parent_div_class}}">
+   <div class="product-item">
+      <a href="{{ product.get_absolute_url }}">
+         <img src="{{product.get_first_image_thumb_large}}" class="w-100" alt="{{product.name}}" />
+      </a>
+      <div class="details">
+         <a href="{{product.get_absolute_url}}" class="text-dark">{{product.name}}</a>
+         <p class="m-0">₹ {{product.price}}</p>
+      </div>
+   </div>
+</div>
+{% endif %}

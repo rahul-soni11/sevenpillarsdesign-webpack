@@ -1,24 +1,11 @@
-<div class="my-5">
-    <div class="pattern mb-3">
-        <h1 class="section-title ptrn-header">{{Swiper.title}}</h1>
-    </div>
+{% load load_product %}
 
+<div class="swiper mb-5">
+    <h1 class="section-title ptrn-header">{{Swiper.title}}</h1>
     <div class="swiper-content position-relative px-md-5">
         <div class="swiper-container">
             <div class="swiper-wrapper">
-                {% for product in Swiper.get_products %}
-                <div class="swiper-slide product-item mb-1">
-                    <a href="{{ product.get_absolute_url }}">
-                        <img src="{{product.get_first_image_thumb_large}}" class="w-100" />
-                    </a>
-                    <div class="details">
-                        <a href="{{product.get_absolute_url}}" class="my-1 text-dark">
-                            {{product.name}}
-                        </a>
-                        <p class="m-0">₹{{product.price}}</p>
-                    </div>
-                </div>
-                {% endfor %}
+                {% load_product parent_div_class='swiper-slide product-item mb-1' queryset=Swiper.get_products %}
             </div>
         </div>
 
@@ -28,7 +15,7 @@
             <div class="swiper-button-next"></div>
         </div>
     </div>
-</div>
-<div class="row m-0 my-4">
-    <a href="{{Swiper.linked_object.get_absolute_url}}" class="btn btn-primary mx-auto">View more</a>
+    <div class="row m-0 mt-3">
+        <a href="{{Swiper.linked_object.get_absolute_url}}" class="btn btn-primary mx-auto">View more</a>
+    </div>
 </div>

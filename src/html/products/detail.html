@@ -10,7 +10,7 @@
 {% block content %}
 <div class="w-100 my-md-4 px-0 px-md-5">
 
-    <div class="container my-md-4 px-1 px-md-3">
+    <div class="container my-md-5">
         <div class="row m-0 my-2">
             {% include 'products/detail-parts/_images.html' %}
             {% include 'products/detail-parts/_description.html' %}
@@ -20,7 +20,7 @@
     <hr>
     <!-- Related_products products -->
     {% if product.get_related_products.count > 0 %}
-    <h3 class="section-title py-3">Other Customers Were Interested In</h3>
+    <h3 class="section-title">Other Customers Were Interested In</h3>
     <div class="row m-0">
         {% related_products 4 3 %}
     </div>
