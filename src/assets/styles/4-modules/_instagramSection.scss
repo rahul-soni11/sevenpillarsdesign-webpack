@@ -2,7 +2,7 @@
 	font-family: Northwell, sans-serif;
 	padding-right: .625rem;
 	padding-left: .625rem;
-	background-image: url('/src/assets/images/bg-torn.svg');
+	background-image: url('../images/bg-torn.svg'); // urls must be relative to the entry-file, here entry file is '_storefront.scss'
 	background-position: 100% 100%;
 	background-repeat: repeat-x;
 	margin-bottom: 0;

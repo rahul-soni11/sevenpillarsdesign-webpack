@@ -1,4 +1,3 @@
-var $ = require("jquery");
 import '@fancyapps/fancybox';
 import Swiper from 'swiper';
 

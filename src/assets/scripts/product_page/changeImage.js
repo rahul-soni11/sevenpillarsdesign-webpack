@@ -1,6 +1,6 @@
 // var $ = require("jquery");
 
-// On thumbnail Click Change Main Image.
+// On thumbnail Click Change Main Product Image.
 function changeMainImage(img_src, id) {
     document.getElementById('img_l').src = img_src;
     let elements = document.getElementsByClassName('active-img');

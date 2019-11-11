@@ -33,27 +33,3 @@
 </div>
 <!--w-100 my-md-4 px-0 px-md-5-->
 {% endblock %}
-
-{% block scripts %}
-<script>
-    // Product Detail Fancybox.
-    $(document).ready(function () {
-        $("[data-fancybox]").fancybox(
-            {
-                buttons: [
-                    "close"
-                ],
-                focus: true,
-                wheel: false,
-                infobar: false,
-
-                animationEffect: "zoom",
-                attr: {
-                    scrolling: "auto"
-                },
-            }
-        );
-    });
-
-</script>
-{% endblock %}

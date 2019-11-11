@@ -1,6 +1,8 @@
 import 'bootstrap';
-import './component/_instagramSection';
-import './component/_nav';
-import './component/_swiper';
-import './component/changeImage';
-import './component/variant_picker';
+import './home_page/_instagramSection';
+import './home_page/_nav';
+import './home_page/_swiper';
+import './home_page/variant_picker';
+
+import './product_page/changeImage';
+import './product_page/fancybox';
