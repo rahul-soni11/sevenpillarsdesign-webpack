@@ -16,7 +16,7 @@
 {% endfor %}
 
 {% for product in queryset %}
-<div class="{{parent_div_class}}">
+<div {{div_attrs}}>
    <div class="product-item">
       <a href="{{ product.get_absolute_url }}">
          <img src="{{product.get_first_image_thumb_large}}" class="w-100" alt="{{product.name}}" />
@@ -30,7 +30,7 @@
 {% endfor %}
 
 {% if product %}
-<div class="{{parent_div_class}}">
+<div {{div_attrs}}>
    <div class="product-item">
       <a href="{{ product.get_absolute_url }}">
          <img src="{{product.get_first_image_thumb_large}}" class="w-100" alt="{{product.name}}" />

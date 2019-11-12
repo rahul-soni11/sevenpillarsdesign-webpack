@@ -1,13 +1,11 @@
-# 📦 Webpack Boilerplate
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) ![David](https://img.shields.io/david/dev/taniarascia/webpack-boilerplate)
+# 📦 Webpack Boilerplate for Shopnex
 
 Minimal Webpack 4 boilerplate with Babel, Sass, ESLint, Hot Module Replacement, and development/production optimization.
 
 ## Installation
 
 ```
-git clone git@github.com:taniarascia/webpack-boilerplate
+git clone https://github.com/rahul-soni11/webpack-boilerplate-django.git
 npm i
 ```
 
@@ -74,10 +72,56 @@ npm run build
 - [`optimize-css-assets-webpack-plugin`](https://github.com/NMFR/optimize-css-assets-webpack-plugin) - Optimize and minimize CSS assets.
 - [`terser-webpack-plugin`](https://github.com/webpack-contrib/terser-webpack-plugin) - Minify JavaScript.
 
+## File Structure
+
+File structure reference for Django Shopnex ecommerce project.
+
+html/
+├── accounts
+│   └── auth
+│       ├── _form_errors.html
+│       ├── account_activation_blank.html
+│       ├── login.html
+│       ├── register.html
+│       └── send_confirm_email.html
+├── base.html
+├── blank-page.html
+├── cart.html
+├── flatpages
+│   └── default.html
+├── footer.html
+├── navbar
+│   ├── _auth_cart.html
+│   └── navbar.html
+├── products
+│   ├── _items.html
+│   ├── detail-parts
+│   │   ├── _description.html
+│   │   └── _images.html
+│   ├── detail.html
+│   ├── list.html
+│   └── pagination.html
+├── registration
+│   ├── logged_out.html
+│   ├── password_change_done.html
+│   ├── password_change_form.html
+│   ├── password_reset_complete.html
+│   ├── password_reset_confirm.html
+│   ├── password_reset_done.html
+│   └── password_reset_form.html
+└── shop
+    ├── components
+    │   ├── _carousel.html
+    │   ├── _highlights.html
+    │   ├── _instagramSection.html
+    │   ├── _swiper.html
+    │   └── _videoSection.html
+    └── home.html
+
+## Important Shopnex Template Tags
+
+
+
 ## Author
 
-- [Tania Rascia](https://www.taniarascia.com)
-
-## License
-
-This project is open source and available under the [MIT License](LICENSE).
+- [Rahul Soni](https://github.com/rahul-soni11/)

@@ -5,7 +5,7 @@
     <div class="swiper-content position-relative px-md-5">
         <div class="swiper-container">
             <div class="swiper-wrapper">
-                {% load_product parent_div_class='swiper-slide product-item mb-1' queryset=Swiper.get_products %}
+                {% load_product div_attrs='class="swiper-slide product-item mb-1" ' queryset=Swiper.get_products %}
             </div>
         </div>
 
