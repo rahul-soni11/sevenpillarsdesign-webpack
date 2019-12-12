@@ -31,46 +31,35 @@
 	background-color: $primary;
 	border-radius: 20%;
 }
+
+
 .footer .address {
 	display: grid;
 }
 .footer .address span,
-.footer p {
-	font-size: 14px;
-	color: #9a9a9a;
-}
+// .footer p {
+// 	font-size: 14px;
+// 	color: #9a9a9a;
+// }
 .footer ul {
-	padding-left: 16px;
+	padding-left: 0px;
 }
 .footer ul li {
-	font-size: 14px;
 	cursor: pointer;
-	color: #9a9a9a;
+	// color: #9a9a9a;
+	list-style-type: none;
+	padding-bottom: 6px;
+	&:hover a{
+		color: $primary;
+	}
+
 }
-.footer ul li {
-	font-size: 14px;
-	cursor: pointer;
-}
+
 .footer ul li:hover {
 	color: $primary;
 }
-.social-icons .icon {
-	width: 30px;
-	height: 30px;
-	border-width: 2px;
-	cursor: pointer;
-}
-.social-icons .icon i {
-	font-size: 14px;
-	font-weight: 600;
-}
-.social-icons .icon:hover {
-	background-color: $primary;
-}
-.social-icons .icon:hover i {
-	color: white;
-}
-.footer span.input-group-text {
-	background: #9a9a9a;
-	color: white;
+.footer ul li a {
+	font-size: 16px;
+	color: #C0C0C0;
+	text-decoration: none;
 }
