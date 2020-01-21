@@ -28,30 +28,27 @@ Follow given steps to add the path of template folder in template settings, so i
 
 1. After cloning this repo, Copy the absolute path of `/src/html/` dir.
 **example**:
+
 `cd sevenpillarsdesign-webpack/src/html` 
- run `pwd` , this will give you full path like 
-`/Users/rahulsoni/React/sevenpillarsdesign-webpack/src/html` 
+
+ run `pwd` , this will give you full path like `/Users/rahulsoni/React/sevenpillarsdesign-webpack/src/html` 
 
 2. Edit `TEMPLATES` settings in the Django project. Add path in the `DIRS` list.
-    <p>&nbsp;</p>
+>for shopnex e-commerce project you need to edit *ecommerce/settings/base.py* file.
 
-    *for shopnex e-commerce project you need to edit *ecommerce/settings/base.py* file.*
-
-    <p>&nbsp;</p>
-
-    ```python
-    TEMPLATES = [{
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-            os.path.join(BASE_DIR, '../templates/'),
-            'PASTE_FULL_PATH_OF_HTML_WHAT_WE_COPIED_IN_STEP_1',
-        ],
-        'OPTIONS': {
-            'context_processors': context_processors,
-            'loaders': loaders,
-        },
-    }]
-    ```
+```python
+TEMPLATES = [{
+    'BACKEND': 'django.template.backends.django.DjangoTemplates',
+    'DIRS': [
+        os.path.join(BASE_DIR, '../templates/'),
+        'PASTE_FULL_PATH_OF_HTML_WHAT_WE_COPIED_IN_STEP_1',
+    ],
+    'OPTIONS': {
+        'context_processors': context_processors,
+        'loaders': loaders,
+    },
+}]
+```
 
 ### Deploy Bundle
 To deploy bundle you need to build and sync *dist* folder with S3 bucket.
@@ -63,9 +60,10 @@ _S3BUCKETNAME_ = named as tenants hostname
 npm run build
 ```
 3. cd into dist dir and sync with s3
-    ```bash
-    aws s3 sync . s3://<YOUR BUcket name >
-    ```
+
+```bash
+aws s3 sync . s3://<_YOUR_BUCKET_NAME_>
+```
 4. Make **_static_** directory public in S3 bucket.
 
 5. Login to superadmin site of your tenant and copy data from **dist/webpack-stats.json** file to *Site Settings > Webpack stats:* and Save.
