@@ -1,6 +1,6 @@
 # 📦 Webpack Boilerplate for Shopnex
 
-Minimal Webpack 4 boilerplate with Babel, Sass, ESLint, Hot Module Replacement, and development/production optimization.
+Minimal Webpack 4 boilerplate for template development for Shopnex. has Babel, Sass, ESLint, Hot Module Replacement, and optimized for development/production.
 
 ## Installation
 
@@ -11,17 +11,64 @@ npm i
 
 ## Usage
 
-### Development server
+### Local testing
+> For testing templates locally you need to have a running copy of the Django project.
 
-```bash
-npm start
-```
+#### In Template repo [Webpack]
+1. Set `public_path: 'http://localhost:8080/'` in **config/paths.js** file. So your template can load assets from the localhost.
+2. Start local server `npm start`, This will generate **dist/webpack-stats.json** file. Login to superadmin site of your tenant and copy data from webpack-stats.json file to *Site Settings > Webpack stats:* and Save.
 
-### Production build
+#### In Shopnex Project [Django]
+By default, the Shopnex project will look for the templates in an S3 bucket named as tenant's hostname/template/.
 
-```bash
-npm run build
-```
+Follow given steps to add the path of template folder in template settings, so if the template not found in the S3 bucket it will load from the specified location.
+
+> Note: Make sure there are no templates files in available in S3 bucket named as your tenant's hostname
+
+
+1. After cloning this repo, Copy the absolute path of `/src/html/` dir.
+**example**:
+`cd sevenpillarsdesign-webpack/src/html` 
+ run `pwd` , this will give you full path like 
+`/Users/rahulsoni/React/sevenpillarsdesign-webpack/src/html` 
+
+2. Edit `TEMPLATES` settings in the Django project. Add path in the `DIRS` list.
+    <p>&nbsp;</p>
+
+    *for shopnex e-commerce project you need to edit *ecommerce/settings/base.py* file.*
+
+    <p>&nbsp;</p>
+
+    ```python
+    TEMPLATES = [{
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [
+            os.path.join(BASE_DIR, '../templates/'),
+            'PASTE_FULL_PATH_OF_HTML_WHAT_WE_COPIED_IN_STEP_1',
+        ],
+        'OPTIONS': {
+            'context_processors': context_processors,
+            'loaders': loaders,
+        },
+    }]
+    ```
+
+### Deploy Bundle
+To deploy bundle you need to build and sync *dist* folder with S3 bucket.
+_S3BUCKETNAME_ = named as tenants hostname
+1. Set `public_path: 'https://s3.ap-south-1.amazonaws.com/<_S3BUCKETNAME_>/'` 
+2. build the project.
+
+    ```bash
+    npm run build
+    ```
+3. cd into dist dir and sync with s3
+    ```bash
+    aws s3 sync . s3://<YOUR BUcket name >
+    ```
+4. Make **_static_** directory public in S3 bucket.
+
+5. Login to superadmin site of your tenant and copy data from **dist/webpack-stats.json** file to *Site Settings > Webpack stats:* and Save.
 
 ## Features
 
