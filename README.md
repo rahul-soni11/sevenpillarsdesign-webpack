@@ -59,9 +59,9 @@ _S3BUCKETNAME_ = named as tenants hostname
 1. Set `public_path: 'https://s3.ap-south-1.amazonaws.com/<_S3BUCKETNAME_>/'` 
 2. build the project.
 
-    ```bash
-    npm run build
-    ```
+```bash
+npm run build
+```
 3. cd into dist dir and sync with s3
     ```bash
     aws s3 sync . s3://<YOUR BUcket name >
