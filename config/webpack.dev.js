@@ -35,7 +35,8 @@ module.exports = merge(common, {
       'Access-Control-Allow-Origin': '*' //to allow access of font files ect.
     },
     allowedHosts: [ //required for HMR unless it will give error chrome console
-      'missindiadesignersarees.local',
+      'missindia.local',
+      'aggana.local',
     ]
 
   },

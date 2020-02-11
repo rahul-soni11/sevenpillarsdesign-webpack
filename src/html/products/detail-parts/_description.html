@@ -10,7 +10,7 @@
 
     {% if show_variant_picker %}
     <!-- {% comment %}Div which will update by js{% endcomment %} -->
-    <span class="py-2 py-md-3 product_price text-dark"></span>
+    <span class="py-2 py-md-3 product_price text-dark" id="variant-price-component"></span>
     {% else %}
     <span class="py-2 py-md-3 product_price text-dark">₹ {{ product.get_price }}</span>
     {% endif %}
@@ -23,13 +23,10 @@
 
     <!-- Variant Pickers -->
     {% if show_variant_picker %}
-
-    {% csrf_token %}
-    <div id="variant-picker" data-variant-picker-data="{{ variant_picker_data }}" data-action="">
-
-    </div>
+    <div id="variant-picker" data-variant-picker-data="{{ variant_picker_data }}" data-action=""></div>
     {% else %}
-    <!-- has_variant=false nothing to do. -->
+    {% comment %}
+    <!-- has_variant=false nothing to do. -->{% endcomment %}
     {% endif %}
 
     <!-- Add to Cart form -->

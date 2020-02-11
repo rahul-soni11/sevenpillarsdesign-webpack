@@ -10,5 +10,5 @@ module.exports = {
   // static: path.resolve(__dirname, '../public'), // static files to copy to build folder,
 
   public_path: 'http://localhost:8080/' //Host from where you serve static files.
-  // public_path: 'https://s3.ap-south-1.amazonaws.com/sevenpillarsdesign.in/' //Host from where you serve static files.
+  // public_path: 'https://s3.ap-south-1.amazonaws.com/fashionstore.shopnexhq.com/' //Host from where you serve static files.
 }
