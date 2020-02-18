@@ -33,8 +33,8 @@
     <form action="{% url 'cart:cart_add' %}" method="POST" id="cart-form">
         {% csrf_token %}
         {{ add_to_cart_form.variant }}
-        <button type="submit" class="btn btn-block btn-dark my-3" id="product-addtocart-button"><i
-                class="fa fa-cart-plus"></i> Add to cart</button>
+        <button type="submit" class="btn btn-block btn-dark my-3" id="product-addtocart-button">
+            <i class="fa fa-cart-plus"></i> Add to cart</button>
     </form>
 
     {% endif %}

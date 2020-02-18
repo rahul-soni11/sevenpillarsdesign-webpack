@@ -52,6 +52,9 @@ body{
 	&:hover{
 		background-color:$primary;
 	}
+	&:disabled{
+		background-color:$secondary;
+	}
 }
 
 /* fancybox css */
