@@ -1,25 +1,12 @@
 {% load static %}
+{% load getDefaultThumb %}
 
-{% comment %} TO BE REMOVED {% endcomment %}
-{% for product in products %}
-<div class="col-lg-3 col-md-4 col-6 my-1 my-md-2 p-1 p-md-2">
-   <div class="product-item">
-      <a href="{{ product.get_absolute_url }}">
-         <img src="{{product.get_first_image_thumb_large}}" class="w-100" alt="{{product.name}}" />
-      </a>
-      <div class="details">
-         <a href="{{product.get_absolute_url}}" class="text-dark">{{product.name}}</a>
-         <p class="m-0">₹ {{product.price}}</p>
-      </div>
-   </div>
-</div>
-{% endfor %}
 
 {% for product in queryset %}
 <div {{div_attrs}}>
    <div class="product-item">
       <a href="{{ product.get_absolute_url }}">
-         <img src="{{product.get_first_image_thumb_large}}" class="w-100" alt="{{product.name}}" />
+         <img src="{% getDefaultThumb product.images.first 'm' %}" class="w-100" alt="{{product.name}}" />
       </a>
       <div class="details">
          <a href="{{product.get_absolute_url}}" class="text-dark">{{product.name}}</a>
@@ -29,15 +16,16 @@
 </div>
 {% endfor %}
 
+{% comment %}For displaying single product itme{% endcomment %}
 {% if product %}
 <div {{div_attrs}}>
    <div class="product-item">
       <a href="{{ product.get_absolute_url }}">
-         <img src="{{product.get_first_image_thumb_large}}" class="w-100" alt="{{product.name}}" />
+         <img src="{% getDefaultThumb product.images.first 'm' %}" class="w-100" alt="{{product.name}}" />
       </a>
       <div class="details">
          <a href="{{product.get_absolute_url}}" class="text-dark">{{product.name}}</a>
-         <p class="m-0">₹ {{product.price}}</p>
+         <p class="m-0">₹ {{product.price}} hi</p>
       </div>
    </div>
 </div>
