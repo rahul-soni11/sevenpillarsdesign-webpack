@@ -54,8 +54,7 @@ function get_variantFragment(attribute_id, name, values) {
         // first variant attribute active
         if (data.variants[current_variant_key].attributes[attribute_id] == value.pk) {
             label.setAttribute('class', 'btn btn-secondary active')
-        }
-        else {
+        } else {
             label.setAttribute('class', 'btn btn-secondary')
         }
 
@@ -131,7 +130,7 @@ function pick_variant(variant_Uk) {
 
 function set_variant(variant_id) {
     // set current variant price 
-    document.getElementById('variant-price-component').innerText = data["variants"][variant_id]["price"]
+    document.getElementById('variant-price-component').innerText = "₹ ".concat(data["variants"][variant_id]["price"])
 
     // set current_variant id to hidden input for submiting form
     document.getElementById('id_variant').value = data.variants[variant_id].id
