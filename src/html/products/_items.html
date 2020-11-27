@@ -9,7 +9,7 @@
          <img src="{% getDefaultThumb product.images.first 'm' %}" class="w-100" alt="{{product.name}}" />
       </a>
       <div class="details">
-         <a href="{{product.get_absolute_url}}" class="text-dark">{{product.name}}</a>
+         <a href="{{product.get_absolute_url}}" class="text-dark d-inline-block text-truncate" style="max-width: 100%;">{{product.name}}</a>
          <p class="m-0">₹ {{product.price}}</p>
       </div>
    </div>
@@ -24,7 +24,7 @@
          <img src="{% getDefaultThumb product.images.first 'm' %}" class="w-100" alt="{{product.name}}" />
       </a>
       <div class="details">
-         <a href="{{product.get_absolute_url}}" class="text-dark">{{product.name}}</a>
+         <a href="{{product.get_absolute_url}}" class="text-dark d-inline-block text-truncate" style="max-width: 100%;">{{product.name}}</a>
          <p class="m-0">₹ {{product.price}} hi</p>
       </div>
    </div>
